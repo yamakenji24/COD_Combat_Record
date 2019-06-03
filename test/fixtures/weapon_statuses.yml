@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  weaponid: 1
+  kill: 1
+  death: 1
+  headshot: 1
+  assist: 1
+  ekia: 1
+  accuracy: 
+  timeused: 1
+
+two:
+  weaponid: 1
+  kill: 1
+  death: 1
+  headshot: 1
+  assist: 1
+  ekia: 1
+  accuracy: 
+  timeused: 1
