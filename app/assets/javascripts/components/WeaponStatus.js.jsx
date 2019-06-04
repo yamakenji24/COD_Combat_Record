@@ -1,32 +1,30 @@
+
 class WeaponStatus extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      initialStatus: this.props.weaponstatus,
-      weaponstatus:[],
+      weaponStatus: this.props.weaponStatus,
       isLoading: true
     }
   }
   
-  componentDidMount() {
-    this.setState({
-      weaponstatus: this.state.initialStatus
-    })
-  }
   render() {
-    return (
-      <div>
-        <h1>各戦績</h1>
-        <StatusList weaponstatus={this.state.weaponstatus} /> 
-      </div>
-    )
+//  <StatusList weaponStatus={this.state.weaponStatus} />  
+    
+      return (
+        <div>
+          <h1>各戦績</h1>
+          <DropDownMenu weaponStatus={this.state.weaponStatus} />
+
+        </div>
+      )
   }
 }
 
 const StatusList=(props)=> {
   return (
     <div>
-      <table className="weaponstatus">
+      <table className="weaponStatus">
         <thead data-type="ok">
           <tr>
             <th>Weapon名</th>
@@ -40,8 +38,8 @@ const StatusList=(props)=> {
           </tr>
         </thead>
         <tbody>
-          {props.weaponstatus.map((weaponstatus) =>
-                                  <StatusItem weaponstatus={weaponstatus} key={weaponstatus.id} />)}          
+          {props.weaponStatus.map((weaponStatus) =>
+                                  <StatusItem weaponStatus={weaponStatus} key={weaponStatus.id} />)}          
         </tbody>
       </table>
     </div>
@@ -49,7 +47,7 @@ const StatusList=(props)=> {
 }
 
 const StatusItem = (props) => {
-  const {name,kill, death, headshot, assist, ekia, accuracy, timeused} = props.weaponstatus
+  const {name,kill, death, headshot, assist, ekia, accuracy, timeused} = props.weaponStatus
   
   return (
     <tr>
