@@ -30,33 +30,37 @@ class DropDownMenu extends React.Component {
   render() {
     const {listOpen} = this.state
     return (
-      <div style={styles.dropDownMenu}>
+      <div>
         <div onClick={this.toggleList.bind(this)} style={styles.menuButton}>
           各武器
         </div>
-        {listOpen && (
-         
-          <div style={styles.menuBox}>
-            <div style={styles.menuContent}>
-              <table className="weaponStatus">
-                <thead data-type="ok">
-                  <tr>
-                    <th>Weapon名</th>
-                    <th>Kill数</th>
-                    <th>Death数</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {this.state.weaponStatus.map(
-                    (weaponStatus) =>
-                      <div onClick={this.handleClickMenu.bind(this,{weaponStatus})}>{weaponStatus.name}</div>
-                  )}
-                </tbody>
-              </table>
-            </div>
-          </div>
+        {listOpen && (          
+          <table>
+            <tr>
+              <th>Weapon</th>
+              <th>Kill</th>
+              <th>Death</th>
+              <th>HeadShot</th>
+              <th>Assist</th>
+              <th>Ekia</th>
+              <th>Accuracy</th>
+              <th>TimeUsed</th>
+            </tr>
+            <tbody>
+              {this.state.weaponStatus.map(
+                (weaponStatus) =>
+                  <div onClick={this.handleClickMenu.bind(this,{weaponStatus})}>
+                    <tr>
+                      <td>{weaponStatus.name}</td>
+                      <td>{weaponStatus.kill}</td>
+                      <td>{weaponStatus.death}</td>
+                    </tr>
+                  </div>
+              )}
+            </tbody>
+          </table>
         )}
-      </div>
+     </div>
     )
   }
 }
@@ -89,7 +93,7 @@ const styles = {
   menuBox: {
     position: 'absolute',
     top: '35px',
-    width: '250px',
+    width: '600px',
     zIndex: 1,
     cursor: 'pointer',
     border: '1px solid black',
