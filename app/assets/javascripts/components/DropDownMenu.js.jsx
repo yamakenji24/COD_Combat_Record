@@ -28,7 +28,6 @@ class DropDownMenu extends React.Component {
   }
 
   render() {
-    console.log(this.state.weaponStatus)
     const {listOpen} = this.state
     return (
       <div style={styles.dropDownMenu}>
@@ -36,21 +35,45 @@ class DropDownMenu extends React.Component {
           各武器
         </div>
         {listOpen && (
+         
           <div style={styles.menuBox}>
             <div style={styles.menuContent}>
-              <div onClick={this.handleClickMenu.bind(this, 1)}>menu 1</div>
-            </div>
-            <div style={styles.menuContent}>
-              <div onClick={this.handleClickMenu.bind(this, 2)}>menu 2</div>
-            </div>
-            <div style={styles.lastMenuContent}>
-              <div onClick={this.handleClickMenu.bind(this, 3)}>menu 3</div>
+              <table className="weaponStatus">
+                <thead data-type="ok">
+                  <tr>
+                    <th>Weapon名</th>
+                    <th>Kill数</th>
+                    <th>Death数</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.state.weaponStatus.map(
+                    (weaponStatus) =>
+                      <div onClick={this.handleClickMenu.bind(this,{weaponStatus})}>{weaponStatus.name}</div>
+                  )}
+                </tbody>
+              </table>
             </div>
           </div>
         )}
       </div>
     )
   }
+}
+
+const DropList=(props)=> {
+  const {listOpen} = this.state.listOpen
+  return (
+    <div style={styles.dropDownMenu}>
+      {listOpen && (
+        <div style={styles.menuBox}>
+          <div style={styles.menuContent}>
+            <div onClick={this.handleClickMenu.bind(this, 1)}>{props.weaponstatus.name}</div>
+          </div>
+        </div>
+      )}
+    </div>
+  )
 }
 
 const styles = {
@@ -66,7 +89,7 @@ const styles = {
   menuBox: {
     position: 'absolute',
     top: '35px',
-    width: '120px',
+    width: '250px',
     zIndex: 1,
     cursor: 'pointer',
     border: '1px solid black',
@@ -79,3 +102,4 @@ const styles = {
     padding: '3px 5px',
   },
 }
+
