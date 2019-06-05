@@ -2,6 +2,7 @@
   "name": "Codbo4-myrecord",
   "private": true,
   "dependencies": {
+    "lodash": "^4.17.11",
     "react-onclickoutside": "^6.8.0"
   }
 }

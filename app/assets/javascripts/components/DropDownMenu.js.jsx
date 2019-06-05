@@ -1,10 +1,17 @@
+//import _ from 'lodash';
+
 class DropDownMenu extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       listOpen: false,
       eachlistOpen: false,
-      weaponStatus: this.props.weaponStatus
+      weaponStatus: this.props.weaponStatus,
+      weaponName:[
+        {name:"bare_hands"},{ name: "tactical_rifle"},{ name: "equipment"},{ name: "assault_rifle"},
+        { name: "shotgun"},{ name: "scorestreak"},{ name: "sniper"},{ name: "specialist"},
+        { name: "LMG"},{ name: "launcher"},{ name: "pistol"},{ name: "SMG"},{ name: "gear"},{ name: "weapon_melee"} 
+      ]
     }
 
   }
@@ -15,11 +22,14 @@ class DropDownMenu extends React.Component {
     }))
   }
   
-  eachList() {
+  eachList(val) {
+    console.log(val)
     this.setState(prevState => ({
       eachlistOpen: !prevState.eachlistOpen,
+      
     }))
   }
+  
   
   handleClickMenu(val) {
     this.setState({
@@ -28,7 +38,7 @@ class DropDownMenu extends React.Component {
     })
     alert(val)
   }
-
+    
   handleClickOutside() {
     this.setState({
       
@@ -38,6 +48,7 @@ class DropDownMenu extends React.Component {
 
   render() {
     const {listOpen, eachlistOpen} = this.state
+    
     return (
       <div>
         <div onClick={this.toggleList.bind(this)} style={styles.menuButton}>
@@ -46,21 +57,13 @@ class DropDownMenu extends React.Component {
         {listOpen &&
          (
            <div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>bare_hands</div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>tactical_rifle</div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>equipment</div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>assault_rifle</div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>shotgun</div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>scorestreak</div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>sniper</div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>specialist</div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>LMG</div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>launcher</div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>pistol</div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>SMG</div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>gear</div>
-             <div onClick={this.eachList.bind(this)} style={styles.menuButton}>weapon_melee</div>
-             
+             {
+                 this.state.weaponName.map(
+                   wname => 
+                     <div onClick={this.eachList.bind(this)} style={styles.menuButton}>{wname.name}</div>
+                 )
+             }
+               
              <table>
                {eachlistOpen &&(
                  <div>
@@ -100,12 +103,6 @@ class DropDownMenu extends React.Component {
       </div>
     )
   }
-}
-
-const DropList=(props)=> {
-  const {name, kill, death, headshot, assist, ekia, accuracy, timeused} = props.weaponStatus
-  
-  
 }
 
 const styles = {
