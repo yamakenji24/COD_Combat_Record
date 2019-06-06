@@ -1,4 +1,3 @@
-//import _ from 'lodash';
 
 class DropDownMenu extends React.Component {
   constructor(props) {
@@ -24,7 +23,7 @@ class DropDownMenu extends React.Component {
   
   eachList(val) {
     this.setState(prevState => ({
-      eachlistOpen: !prevState.eachlistOpen,
+      eachlistOpen: true,
       weaponlistOpen: val
     }))
   }
@@ -91,84 +90,3 @@ class DropDownMenu extends React.Component {
     )
   }
 }
-const StatusList=(props)=>{
-  return(
-    <div>
-
-      <table className="weaponstatus">
-        <thead data-type="ok">
-          <tr>
-            <th>Weapon名</th>
-            <th>Kill数</th>
-            <th>Death数</th>
-            <th>HeadShot数</th>
-            <th>Assist数</th>
-            <th>Ekia</th>
-            <th>Accuracy</th>              
-            <th>TimeUsed</th>
-          </tr>            
-        </thead>          
-        <tbody>
-          {
-            props.weaponstatus
-            //<ShowWeapon showweapon={props.weaponstatus} />
-            //console.log(props.weaponstatus)
-            /*
-            props.weaponstatus.forEach(
-              (eachvalue) =>
-                {
-                  return <ShowWeapon showweapon={eachvalue.value} />   
-                }
-            )*/
-            
-          }
-        </tbody>
-      </table>
-    </div>
-  )
-}
-
-const ShowWeapon=(props)=>{
-  console.log(props.showweapon)
-  const {name, kill, death, headshot, assist, ekia, accuracy, timeused} = props.showweapon
-  return (
-        <tr>
-          <td>{name}</td>
-          <td>{kill}</td>
-          <td>{death}</td>
-          <td>{headshot}</td>
-          <td>{assist}</td>
-          <td>{ekia}</td>
-          <td>{accuracy}</td>
-          <td>{timeused}</td>
-        </tr>
-    )
-}
-
-const styles = {
-  dropDownMenu: {
-    position: 'relative',
-  },
-  menuButton: {
-    display: 'inline',
-    cursor: 'pointer',
-    border: '1px solid black',
-    padding: '3px 8px',
-  },
-  menuBox: {
-    position: 'absolute',
-    top: '40px',
-    width: '800px',
-    zIndex: 1,
-    cursor: 'pointer',
-    border: '1px solid black',
-  },
-  menuContent: {
-    padding: '3px 5px',
-    borderBottom: '1px solid black',
-  },
-  lastMenuContent: {
-    padding: '3px 5px',
-  },
-}
-
