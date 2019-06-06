@@ -11,11 +11,11 @@ class DropDownMenu extends React.Component {
         {name:"bare_hands"},{ name: "tactical_rifle"},{ name: "equipment"},{ name: "assault_rifle"},
         { name: "shotgun"},{ name: "scorestreak"},{ name: "sniper"},{ name: "specialist"},
         { name: "LMG"},{ name: "launcher"},{ name: "pistol"},{ name: "SMG"},{ name: "gear"},{ name: "weapon_melee"} 
-      ]
+      ],
+      weaponlistOpen: "null" 
     }
-
   }
-  
+
   toggleList() {
     this.setState(prevState => ({
       listOpen: !prevState.listOpen,
@@ -23,10 +23,9 @@ class DropDownMenu extends React.Component {
   }
   
   eachList(val) {
-    console.log(val)
     this.setState(prevState => ({
       eachlistOpen: !prevState.eachlistOpen,
-      
+      weaponlistOpen: val
     }))
   }
   
@@ -41,29 +40,33 @@ class DropDownMenu extends React.Component {
     
   handleClickOutside() {
     this.setState({
-      
       listOpen: false,
     })
   }
 
   render() {
     const {listOpen, eachlistOpen} = this.state
+
+    function CheckWeapon(name) {
+      if (this.state.weaponlistOpen == name.groupname) {
+        return true
+      } else {
+        return false
+      }
+    }
     
     return (
       <div>
-        <div onClick={this.toggleList.bind(this)} style={styles.menuButton}>
-          各武器
-        </div>
+        <div onClick={this.toggleList.bind(this)} style={styles.menuButton}>各武器</div>
         {listOpen &&
          (
            <div>
              {
-                 this.state.weaponName.map(
-                   wname => 
-                     <div onClick={this.eachList.bind(this)} style={styles.menuButton}>{wname.name}</div>
-                 )
+               this.state.weaponName.map(
+                 wname => 
+                   <div onClick={this.eachList.bind(this,wname.name)} style={styles.menuButton}>{wname.name}</div>
+               )
              }
-               
              <table>
                {eachlistOpen &&(
                  <div>
@@ -81,18 +84,23 @@ class DropDownMenu extends React.Component {
                    </thead>
                    <tbody>                          
                      {this.state.weaponStatus.map(
-                       (weaponStatus) =>
-                         <tr onClick={this.handleClickMenu.bind(this,{weaponStatus})}>
-                           <td>{weaponStatus.name}</td>
-                           <td>{weaponStatus.kill}</td>
-                           <td>{weaponStatus.death}</td>
-                           <td>{weaponStatus.headshot}</td>
-                           <td>{weaponStatus.assist}</td>
-                           <td>{weaponStatus.ekia}</td>
-                           <td>{weaponStatus.accuracy}</td>
-                           <td>{weaponStatus.timeused}</td>
-                         </tr>
-                       
+                       eachweapon =>
+                         {  
+                           if(eachweapon.groupname == this.state.weaponlistOpen) {
+                             {console.log(eachweapon)}
+                             //<tr onClick={this.handleClickMenu.bind(this,eachweapon)}>
+                             <tr>
+                               <td>{eachweapon.name}</td>
+                               <td>{eachweapon.kill}</td>
+                               <td>{eachweapon.death}</td>
+                               <td>{eachweapon.headshot}</td>
+                               <td>{eachweapon.assist}</td>
+                               <td>{eachweapon.ekia}</td>
+                               <td>{eachweapon.accuracy}</td>
+                               <td>{eachweapon.timeused}</td>
+                             </tr>
+                           }
+                         }
                      )}
                    </tbody>
                  </div>
