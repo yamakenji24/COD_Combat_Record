@@ -1,8 +1,9 @@
 class AchievementController < ApplicationController
   def index
-    @weaponstatus = WeaponStatus.joins(:weapon).select(
+    @weaponStatus = WeaponStatus.joins(weapon: :weapon_group).select(
       :id,
       :groupid,
+      :groupname,
       :name,
       :kill,
       :death,
