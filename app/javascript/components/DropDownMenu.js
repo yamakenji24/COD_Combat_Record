@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-
+import {Animated} from "react-animated-css";
 import StatusList from "./StatusList"
 import ShowWeapon from "./ShowWeapon"
 
@@ -55,21 +55,26 @@ class DropDownMenu extends React.Component {
    
     return (
       <div>
-        <div onClick={this.toggleList.bind(this)} style={styles.menuButton}>各武器</div>
+     
+          <div onClick={this.toggleList.bind(this)} style={styles.menuButton}>各武器</div>
+     
         {listOpen &&
          (
-         <div>
-           {
-             this.state.weaponName.map(
-               wname =>
-                 <div onClick={this.eachList.bind(this,wname.name)} style={styles.menuButton} key={wname.name}>{wname.name}</div>
-             )
-           }
            
-           {
-             eachlistOpen && (
-               <div>
-                 {
+           <div>
+             <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>
+               
+               {
+                 this.state.weaponName.map(
+                   wname =>
+                     <div onClick={this.eachList.bind(this,wname.name)} style={styles.menuButton} key={wname.name}>{wname.name}</div>
+                 )
+               }
+             </Animated>           
+             {
+               eachlistOpen && (
+                 <div>
+                   {
                    this.state.weaponStatus.forEach(
                      getweapon =>
                        {   
@@ -80,12 +85,12 @@ class DropDownMenu extends React.Component {
                          }
                        }
                    )
-                 }
-                 <StatusList weaponstatus={weapons} />
-               </div>
-             )
-           }
-         </div>
+                   }
+                   <StatusList weaponstatus={weapons} />
+                 </div>
+               )
+             }
+           </div>
          )
         }
       </div>

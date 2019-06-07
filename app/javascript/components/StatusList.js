@@ -1,8 +1,10 @@
 import React from "react"
+import {Animated} from "react-animated-css"
 
 const StatusList=(props)=>{
   return(
     <div>
+      <Animated animationIn="fadeInDown" animationOut="fadeOutUp" isVisible={true}>
       <table className="weaponstatus">
         <thead data-type="ok">
           <tr>
@@ -20,6 +22,7 @@ const StatusList=(props)=>{
           { props.weaponstatus }
         </tbody>
       </table>
+      </Animated>      
     </div>
   )
 }
