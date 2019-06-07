@@ -1,3 +1,5 @@
+import React from "react"
+
 const StatusList=(props)=>{
   return(
     <div>
@@ -21,3 +23,4 @@ const StatusList=(props)=>{
     </div>
   )
 }
+export default StatusList

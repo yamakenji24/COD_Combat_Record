@@ -1,6 +1,7 @@
+import React from "react"
+
 const ShowWeapon=(props)=>{
   const {name, kill, death, headshot, assist, ekia, accuracy, timeused} = props.showweapon
-
   return (
     <tr>
       <td>{name}</td>
@@ -14,3 +15,4 @@ const ShowWeapon=(props)=>{
     </tr>
   )
 }
+export default ShowWeapon

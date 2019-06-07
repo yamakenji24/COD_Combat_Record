@@ -1,3 +1,7 @@
+import React, {Component} from "react"
+
+import StatusList from "./StatusList"
+import ShowWeapon from "./ShowWeapon"
 
 class DropDownMenu extends React.Component {
   constructor(props) {
@@ -14,7 +18,6 @@ class DropDownMenu extends React.Component {
       weaponlistOpen: "null"
     }
   }
-
   toggleList() {
     this.setState(prevState => ({
       listOpen: !prevState.listOpen,
@@ -27,8 +30,7 @@ class DropDownMenu extends React.Component {
       weaponlistOpen: val
     }))
   }
-  
-  
+
   handleClickMenu(val) {
     this.setState({
       listOpen: false,
@@ -36,7 +38,7 @@ class DropDownMenu extends React.Component {
     })
     alert(val)
   }
-    
+
   handleClickOutside() {
     this.setState({
       listOpen: false,
@@ -50,7 +52,7 @@ class DropDownMenu extends React.Component {
     function PushWeapon(val) {
       return val
     }
-    
+   
     return (
       <div>
         <div onClick={this.toggleList.bind(this)} style={styles.menuButton}>各武器</div>
@@ -90,3 +92,4 @@ class DropDownMenu extends React.Component {
     )
   }
 }
+export default DropDownMenu
