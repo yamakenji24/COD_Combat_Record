@@ -10,13 +10,12 @@ class WeaponStatus extends React.Component {
     }
   }
   render() {
-    //console.log(this.state.weaponStatus)
     return (
       <div>
-        <h1>各戦績</h1>
-      
+
+        {console.log(this.state.weaponStatus)}
+        <h1>各戦績</h1>      
         <DropDownMenu weaponStatus={this.state.weaponStatus} />
-      
       </div>
     )
   }
