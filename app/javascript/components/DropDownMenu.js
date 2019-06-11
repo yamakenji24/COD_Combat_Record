@@ -48,22 +48,14 @@ class DropDownMenu extends React.Component {
   render() {
     const {listOpen, eachlistOpen} = this.state
     const weapons = []
-
-    function PushWeapon(val) {
-      return val
-    }
    
     return (
       <div>
-     
           <div onClick={this.toggleList.bind(this)} style={styles.menuButton}>各武器</div>
-     
         {listOpen &&
          (
-           
            <div>
              <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>
-               
                {
                  this.state.weaponName.map(
                    wname =>

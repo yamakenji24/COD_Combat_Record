@@ -17,9 +17,9 @@ class ConnectionController < ApplicationController
           
           status = Weapon.find_by(name: each_wp["label"])          
           WeaponStatus.create(
-            weaponid: status.id,
+            weapon_id: status.id,
             kill: each_wp["kills"],
-            death: each_wp["deaths"],
+            death: each_wp["deathsDuringUse"],
             headshot: each_wp["headshots"],
             assist: each_wp["assists"],
             ekia: each_wp["ekia"],

@@ -1,5 +1,6 @@
 import React,{Component} from "react"
-import DropDownMenu from './DropDownMenu';
+import DropDownMenu from './DropDownMenu'
+import MaximumEkia from './MaximumEkia'
 
 class WeaponStatus extends React.Component {
   constructor(props) {
@@ -12,8 +13,7 @@ class WeaponStatus extends React.Component {
   render() {
     return (
       <div>
-
-        {console.log(this.state.weaponStatus)}
+        <MaximumEkia weaponStatus={this.state.weaponStatus}/>
         <h1>各戦績</h1>      
         <DropDownMenu weaponStatus={this.state.weaponStatus} />
       </div>

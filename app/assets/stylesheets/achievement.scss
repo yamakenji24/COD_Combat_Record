@@ -2,15 +2,88 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#maxekia {
+    width: 500px;
+    color:#ffffff;
+    background-color: #333399;
+    border-style: solid;
+    border-width: 3px;
+}
+#viewmore {
+    border-style:none;
+    color:#00CCCC;
+    cursor: pointer;
+}
+
 table {
     background: #fff;
     text-align: center;
     table-layout: fixed;
 }
+
 th{
     background: #fff5e5;
     width: 230px;
 }
+
 td {
     padding: 1px 50px;
+}
+h2 {
+    position: relative;
+    padding-left: 25px;
+}
+
+h2:before {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 15px rgb(119, 195, 223);
+}
+h2:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 200px;
+    border-bottom: solid 3px rgb(119, 195, 223);
+}
+h4{
+    position:relative;
+    padding-left: 25px;
+}
+h4:before {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 0;
+    border: none;
+    border-left: solid 15px transparent;
+    border-bottom: solid 15px rgb(119, 195, 223);
+}
+h4:after {
+    position: absolute;
+    content: '';
+    bottom: -3px;
+    left: 10px;
+    width: 190px;
+    border-bottom: solid 3px rgb(119, 195, 223);
+}
+
+#left, #right {
+    width:370px;
+    height: 150px;
+    float:left;
+}
+
+#center {
+    width: 600px;
+    
 }
