@@ -27,19 +27,22 @@ class ShowmaxEkia extends React.Component {
   render() {
     return (
       <div id="maxekia">
-        {this.state.maxEkia[0].groupname}
-        {<p></p>}
-        {this.state.maxEkia[0].name}{<p></p>}
+        <p>{this.state.maxEkia[0].groupname}</p>
+        <p>{this.state.maxEkia[0].name}</p>
         <div onClick={this.openModal.bind(this)} id="viewmore">View More</div>
-        <Modal
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
-          style={customStyles}
-          contentLabel="Open Modal"
-        >
-          <div onClick={this.closeModal.bind(this)} id="viewmore">Close</div>
-          <ShowMaxStatus maxEkia={this.state.maxEkia} key={this.state.maxEkia[0].id}/>
-        </Modal>
+    
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            onRequestClose={this.closeModal}
+            style={customStyles}
+            contentLabel="Open Modal"
+          >
+            <Animated animationIn="flipInY" animationOut="flipOutY" isVisible={true}>
+              <div onClick={this.closeModal.bind(this)} id="viewmore">Close</div>
+              <ShowMaxStatus maxEkia={this.state.maxEkia} key={this.state.maxEkia[0].id}/>
+            </Animated>
+          </Modal>
+    
       </div>
     )
   }
