@@ -1,11 +1,16 @@
 const Actions = {
-  addWeapon(value) {
+  addWeapon(weaponStatus) {
     return {
       type: 'ADDWEAPON',
-      value
+      weaponStatus,
     }
   },
-
+  changelistStatus(listOpen) {
+    return {
+      type: 'CHANGELISTSTATUS',
+      listOpen,
+    }
+  },
 }
 
 export default Actions

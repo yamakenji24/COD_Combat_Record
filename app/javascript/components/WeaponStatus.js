@@ -3,23 +3,24 @@ import DropDownMenu from './DropDownMenu'
 import MaximumEkia from './MaximumEkia'
 import {createStore} from 'redux'
 import {Provider} from 'react-redux'
-import reducer from './reducers/reducer'
+import reducer from './../reducers/reducer'
+import Actions from './../actions/Actions'
+import AppDropMenu from './../containers/AppDropMenu'
 
-const store = createStore(reducer)
-
-class WeaponStatus extends React.Component {
-
+class WeaponStatus extends React.Component {  
   render() {
+    const initialState = {
+      weaponStatus: this.props.weaponStatus
+    }
+    const store = createStore(reducer, initialState)
     return (
       <div>
-        <Provider store={store} >
-          <MaximumEkia weaponStatus={this.props.weaponStatus}/>
-          <h1>各戦績</h1>      
-          <DropDownMenu weaponStatus={this.props.weaponStatus} />
+        <Provider store={store}>
+          <AppDropMenu />
         </Provider>
       </div>
     )
   }
-
 }
+
 export default WeaponStatus

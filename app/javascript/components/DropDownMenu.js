@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import {Animated} from "react-animated-css";
+import {connect,} from "react-redux"
 import StatusList from "./StatusList"
 import ShowWeapon from "./ShowWeapon"
 
@@ -9,15 +10,10 @@ class DropDownMenu extends React.Component {
     this.state = {
       listOpen: false,
       eachlistOpen: false,
-      weaponStatus: this.props.weaponStatus,
-      weaponName:[
-        {name:"bare_hands"},{ name: "tactical_rifle"},{ name: "equipment"},{ name: "assault_rifle"},
-        { name: "shotgun"},{ name: "scorestreak"},{ name: "sniper"},{ name: "specialist"},
-        { name: "LMG"},{ name: "launcher"},{ name: "pistol"},{ name: "SMG"},{ name: "gear"},{ name: "weapon_melee"} 
-      ],
       weaponlistOpen: "null"
     }
   }
+  
   toggleList() {
     this.setState(prevState => ({
       listOpen: !prevState.listOpen,
@@ -48,7 +44,7 @@ class DropDownMenu extends React.Component {
   render() {
     const {listOpen, eachlistOpen} = this.state
     const weapons = []
-   
+    {console.log(this.props)}
     return (
       <div>
           <div onClick={this.toggleList.bind(this)} style={styles.menuButton}>各武器</div>
@@ -57,7 +53,7 @@ class DropDownMenu extends React.Component {
            <div>
              <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>
                {
-                 this.state.weaponName.map(
+                 this.props.weaponName.map(
                    wname =>
                      <div onClick={this.eachList.bind(this,wname.name)} style={styles.menuButton} key={wname.name}>{wname.name}</div>
                  )
@@ -67,7 +63,7 @@ class DropDownMenu extends React.Component {
                eachlistOpen && (
                  <div>
                    {
-                   this.state.weaponStatus.forEach(
+                   this.props.weapons.weaponStatus.forEach(
                      getweapon =>
                        {   
                          if(getweapon.groupname == this.state.weaponlistOpen) {
@@ -89,4 +85,8 @@ class DropDownMenu extends React.Component {
     )
   }
 }
-export default DropDownMenu
+
+const mapStateToProps = (state) => {
+  return state
+}
+export default connect(mapStateToProps)(DropDownMenu)
