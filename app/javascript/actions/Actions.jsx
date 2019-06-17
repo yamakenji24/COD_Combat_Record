@@ -29,10 +29,10 @@ const Actions = {
       user
     }
   },
-  closeModal() {
+  closeModal(user) {
     return {
       type: 'CLOSEMODAL',
-      
+      user
     }
   },
 }

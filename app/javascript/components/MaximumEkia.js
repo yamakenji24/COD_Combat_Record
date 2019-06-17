@@ -21,7 +21,7 @@ class MaximumEkia extends React.Component {
         }
       }
     )}
-    {//this.props.handleGetMaxStatus(weapon)
+    {console.log(weapon)
     }
     return (
       <div>
