@@ -1,5 +1,7 @@
 const initialState = {
   weapons: '',
+  maxweapon:[],
+  maxequipment:[],
   listOpen: false,
   eachlistOpen: false,
   weaponlistOpen: "null",
@@ -16,14 +18,37 @@ const reducer = (state,  action) => {
   case 'ADDWEAPON':{
     //weapons: state.weapons.concat(action.weaponStatus)
   }
-  case 'GETWEAPON': {
-    return !state
+  case 'TOGGLELIST': {
+    //return console.log(!action.listOpen)
+    return Object.assign({},state,{
+      listOpen: !action.listOpen
+    });
+  }
+  case 'EACHLIST': {
+    return Object.assign({}, state,{
+      eachlistOpen: true,
+      weaponlistOpen: action.value
+    });
+  }
+  case 'GETMAXSTATUS': {
+    return Object.assign({}, state,{
+      maxweapon: action.weapon,
+    });
+  }
+  case 'OPENMODAL' : {
+    return Object.assign({}, state, {
+      modalIsOpen: true,
+    });
+  }
+  case 'CLOSEMODAL': {
+    return Object.assign({}, state, {
+      modalIsOpen: false,
+    });
   }
   default: {
     initialState.weapons = state
     return initialState
-  }
-  }
+  }}
 }
 
 export default reducer

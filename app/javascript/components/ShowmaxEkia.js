@@ -1,7 +1,10 @@
 import React from "react"
+import {connect,} from 'react-redux'
 import {Animated} from "react-animated-css"
 import ShowMaxStatus from "./ShowMaxStatus"
 import Modal from "react-modal"
+import mapStateToProps from './../mapProps/mapStateToProps'
+import mapDispatchToProps from './../mapProps/mapDispatchToProps'
 
 //Modal.setAppElement('#root')
 
@@ -9,36 +12,25 @@ class ShowmaxEkia extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      modalIsOpen: false,
       maxEkia: this.props.showmaxekia
     }
   }
-  openModal(user) {
-    this.setState({
-      modalIsOpen: true
-    })
-  }
-  closeModal() {
-    this.setState({
-      modalIsOpen: false
-    })
-  }
-  
+    
   render() {
     return (
       <div id="maxekia">
         <p>{this.state.maxEkia[0].groupname}</p>
         <p>{this.state.maxEkia[0].name}</p>
-        <div onClick={this.openModal.bind(this)} id="viewmore">View More</div>
+        <div onClick={this.props.handleopenModal.bind(this)} id="viewmore">View More</div>
     
           <Modal
-            isOpen={this.state.modalIsOpen}
-            onRequestClose={this.closeModal}
+            isOpen={this.props.modalIsOpen}
+            onRequestClose={this.props.handlecloseModal}
             style={customStyles}
             contentLabel="Open Modal"
           >
             <Animated animationIn="flipInY" animationOut="flipOutY" isVisible={true}>
-              <div onClick={this.closeModal.bind(this)} id="viewmore">Close</div>
+              <div onClick={this.props.handlecloseModal.bind(this)} id="viewmore">Close</div>
               <ShowMaxStatus maxEkia={this.state.maxEkia} key={this.state.maxEkia[0].id}/>
             </Animated>
           </Modal>
@@ -59,4 +51,4 @@ const customStyles = {
   },
 }
 
-export default ShowmaxEkia
+export default connect(mapStateToProps, mapDispatchToProps)(ShowmaxEkia)

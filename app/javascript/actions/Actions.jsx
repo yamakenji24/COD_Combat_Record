@@ -5,10 +5,34 @@ const Actions = {
       weaponStatus,
     }
   },
-  changelistStatus(listOpen) {
+  toggleList(listOpen) {
     return {
-      type: 'CHANGELISTSTATUS',
+      type: 'TOGGLELIST',
       listOpen,
+    }
+  },
+  eachList(value) {
+    return {
+      type: 'EACHLIST',
+      value,
+    }
+  },
+  getmaxWpEp(weapon) {
+    return {
+      type: 'GETMAXSTATUS',
+      weapon,
+    }
+  },
+  openModal(user) {
+    return {
+      type: 'OPENMODAL',
+      user
+    }
+  },
+  closeModal() {
+    return {
+      type: 'CLOSEMODAL',
+      
     }
   },
 }
