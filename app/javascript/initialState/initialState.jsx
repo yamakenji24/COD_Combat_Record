@@ -4,7 +4,8 @@ const initialState = {
   maxequipment:[],
   listOpen: false,                                                                             
   eachlistOpen: false,                                                                         
-  modalIsOpen: false,                                                                          
+  modalWeaponOpen: false,
+  modalEquipOpen: false,
   weaponlistOpen: "null",                                                                      
   weaponName:[
     {name:"bare_hands"},{ name: "tactical_rifle"},{ name: "equipment"},{ name: "assault_rifle"},

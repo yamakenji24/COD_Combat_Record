@@ -23,16 +23,26 @@ const Actions = {
       weapon,
     }
   },
-  openModal(user) {
+  openweaponModal(user) {
     return {
-      type: 'OPENMODAL',
+      type: 'OPENWEAPONMODAL',
       user
     }
   },
-  closeModal(user) {
+  closeweaponModal(user) {
     return {
-      type: 'CLOSEMODAL',
+      type: 'CLOSEWEAPONMODAL',
       user
+    }
+  },
+  openequipModal() {
+    return {
+      type: 'OPENEQUIPMODAL',
+    }
+  },
+  closeequipModal() {
+    return {
+      type: 'CLOSEEQUIPMODAL',
     }
   },
 }

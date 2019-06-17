@@ -19,13 +19,15 @@ class ShowequipEkia extends React.Component {
       <div id="maxekia">
         <p>{this.state.equipStatus[0].groupname}</p>
         <p>{this.state.equipStatus[0].name}</p>
-        <div onClick={this.props.handleopenModal.bind(this)} key="equipview"id="equipview">View Equip</div>
+        <div onClick={this.props.handleopenequipModal.bind(this)} key="equipview"id="equipview">View Equip</div>
         <Modal
-          isOpen={this.props.modalIsOpen}
-          onRequestClose={this.props.handlecloseModal}
+          isOpen={this.props.modalEquipOpen}
+          onRequestClose={this.props.handlecloseequipModal}
           style = {customStyles}
         >
-          <div onClick={this.props.handlecloseModal.bind(this)} id="equipview">Close</div>
+          <Animated animationIn="flipInY" animationOut="flipOutY" isVisible={true}>
+            <div onClick={this.props.handlecloseequipModal.bind(this)} id="equipview">Close</div>
+          </Animated>
         </Modal>
         
       </div>

@@ -9,11 +9,17 @@ const mapDispatchToProps = (dispatch) => {
     handleeachList(value) {
       dispatch(Actions.eachList(value))
     },
-    handleopenModal(user) {
-      dispatch(Actions.openModal(user))
+    handleopenweaponModal(user) {
+      dispatch(Actions.openweaponModal(user))
     },
-    handlecloseModal() {
-      dispatch(Actions.closeModal())
+    handlecloseweaponModal() {
+      dispatch(Actions.closeweaponModal())
+    },
+    handleopenequipModal() {
+      dispatch(Actions.openequipModal())
+    },
+    handlecloseequipModal() {
+      dispatch(Actions.closeequipModal())
     },
     handleGetMaxStatus(weapon) {
       dispatch(Actions.getmaxWpEp(weapon))

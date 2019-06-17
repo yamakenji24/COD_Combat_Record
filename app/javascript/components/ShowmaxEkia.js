@@ -22,15 +22,15 @@ class ShowmaxEkia extends React.Component {
       <div id="maxekia">
         <p>{this.state.maxEkia[0].groupname}</p>
         <p>{this.state.maxEkia[0].name}</p>
-        <div onClick={this.props.handleopenModal.bind(this)} key="viewmore"id="viewmore">View Weapon</div>
+        <div onClick={this.props.handleopenweaponModal.bind(this)} id="viewmore">View Weapon</div>
     
         <Modal
-          isOpen={this.props.modalIsOpen}
-          onRequestClose={this.props.handlecloseModal}
+          isOpen={this.props.modalWeaponOpen}
+          onRequestClose={this.props.handlecloseweaponModal}
           style={customStyles}
         >
           <Animated animationIn="flipInY" animationOut="flipOutY" isVisible={true}>
-            <div onClick={this.props.handlecloseModal.bind(this)} id="viewmore">Close</div>
+            <div onClick={this.props.handlecloseweaponModal.bind(this)} id="viewmore">Close</div>
             <ShowMaxStatus maxEkia={this.state.maxEkia} key={this.state.maxEkia[0].id}/>
           </Animated>
         </Modal>

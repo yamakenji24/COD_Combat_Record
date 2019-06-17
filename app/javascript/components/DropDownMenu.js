@@ -14,7 +14,7 @@ class DropDownMenu extends React.Component {
     return (
       <div>
         <div onClick={this.props.handletoggleList.bind(this,this.props.listOpen)} style={styles.menuButton}>各武器</div>
-        {console.log(this.props)}
+
         {this.props.listOpen && (
           <div>
             <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>

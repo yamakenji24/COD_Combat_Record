@@ -3,7 +3,6 @@ import initialState from './../initialState/initialState'
 const reducer = (state,  action) => {
   switch (action.type) {
   case 'TOGGLELIST': {
-    //return console.log(!action.listOpen)
     return Object.assign({},state,{
       listOpen: !action.listOpen
     });
@@ -19,14 +18,24 @@ const reducer = (state,  action) => {
       maxweapon: action.weapon,
     });
   }
-  case 'OPENMODAL' : {
+  case 'OPENWEAPONMODAL' : {
     return Object.assign({}, state, {
-      modalIsOpen: true,
+      modalWeaponOpen: true,
     });
   }
-  case 'CLOSEMODAL': {
+  case 'CLOSEWEAPONMODAL': {
     return Object.assign({}, state, {
-      modalIsOpen: false,
+      modalWeaponOpen: false,
+    });
+  }
+  case 'OPENEQUIPMODAL': {
+    return Object.assign({}, state, {
+      modalEquipOpen: true,
+    });
+  }
+  case 'CLOSEEQUIPMODAL': {
+    return Object.assign({}, state, {
+      modalEquipOpen: false,
     });
   }
   default: {
