@@ -1,100 +1,46 @@
 import React, {Component} from "react"
 import {Animated} from "react-animated-css";
+import {connect,} from "react-redux"
 import StatusList from "./StatusList"
 import ShowWeapon from "./ShowWeapon"
+import mapStateToProps from './../mapProps/mapStateToProps'
+import mapDispatchToProps from './../mapProps/mapDispatchToProps'
 
 class DropDownMenu extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      listOpen: false,
-      eachlistOpen: false,
-      weaponStatus: this.props.weaponStatus,
-      weaponName:[
-        {name:"bare_hands"},{ name: "tactical_rifle"},{ name: "equipment"},{ name: "assault_rifle"},
-        { name: "shotgun"},{ name: "scorestreak"},{ name: "sniper"},{ name: "specialist"},
-        { name: "LMG"},{ name: "launcher"},{ name: "pistol"},{ name: "SMG"},{ name: "gear"},{ name: "weapon_melee"} 
-      ],
-      weaponlistOpen: "null"
-    }
-  }
-  toggleList() {
-    this.setState(prevState => ({
-      listOpen: !prevState.listOpen,
-    }))
-  }
   
-  eachList(val) {
-    this.setState(prevState => ({
-      eachlistOpen: true,
-      weaponlistOpen: val
-    }))
-  }
-
-  handleClickMenu(val) {
-    this.setState({
-      listOpen: false,
-      eachlistOpen: false,
-    })
-    alert(val)
-  }
-
-  handleClickOutside() {
-    this.setState({
-      listOpen: false,
-    })
-  }
-
   render() {
-    const {listOpen, eachlistOpen} = this.state
     const weapons = []
-
-    function PushWeapon(val) {
-      return val
-    }
-   
+    
     return (
       <div>
-     
-          <div onClick={this.toggleList.bind(this)} style={styles.menuButton}>各武器</div>
-     
-        {listOpen &&
-         (
-           
-           <div>
-             <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>
-               
-               {
-                 this.state.weaponName.map(
-                   wname =>
-                     <div onClick={this.eachList.bind(this,wname.name)} style={styles.menuButton} key={wname.name}>{wname.name}</div>
-                 )
-               }
-             </Animated>           
-             {
-               eachlistOpen && (
-                 <div>
-                   {
-                   this.state.weaponStatus.forEach(
-                     getweapon =>
-                       {   
-                         if(getweapon.groupname == this.state.weaponlistOpen) {
-                           weapons.push(
-                             <ShowWeapon key={getweapon.id} showweapon={getweapon} />
-                           )
-                         }
-                       }
-                   )
-                   }
-                   <StatusList weaponstatus={weapons} />
-                 </div>
-               )
-             }
-           </div>
-         )
-        }
+        <div onClick={this.props.handletoggleList.bind(this,this.props.listOpen)} style={styles.menuButton}>各武器</div>
+        
+        {this.props.listOpen && (
+          <div>
+            <Animated animationIn="bounceInLeft" animationOut="fadeOut" isVisible={true}>
+              {this.props.weaponName.map (
+                wname =>
+                  <div onClick={this.props.handleeachList.bind(this,wname.name)} style={styles.menuButton} key={wname.name}>{wname.name}</div>
+              )}
+            </Animated>           
+            { this.props.eachlistOpen && (
+              <div>
+                {this.props.weapons.weaponStatus.forEach (
+                  getweapon =>
+                   { if(getweapon.groupname == this.props.weaponlistOpen) {
+                     weapons.push(
+                       <ShowWeapon key={getweapon.id} showweapon={getweapon} />
+                     )
+                   }}
+                )}
+                <StatusList weaponstatus={weapons} />
+              </div>
+            )}
+          </div>
+        )}
       </div>
     )
   }
 }
-export default DropDownMenu
+
+export default connect(mapStateToProps, mapDispatchToProps)(DropDownMenu)

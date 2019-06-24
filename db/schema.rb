@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_061606) do
+ActiveRecord::Schema.define(version: 2019_06_18_053204) do
 
   create_table "weapon_groups", force: :cascade do |t|
     t.string "groupname"

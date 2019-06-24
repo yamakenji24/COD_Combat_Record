@@ -1,25 +1,26 @@
-import React,{Component} from "react"
-import DropDownMenu from './DropDownMenu';
+import React,{Component} from 'react'
+import DropDownMenu from './DropDownMenu'
+import MaximumEkia from './MaximumEkia'
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+import reducer from './../reducers/reducer'
+import Actions from './../actions/Actions'
+import AppDropMenu from './../containers/AppDropMenu'
 
-class WeaponStatus extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      weaponStatus: this.props.weaponStatus,
-      isLoading: true
-    }
-  }
+class WeaponStatus extends React.Component {  
   render() {
-    //console.log(this.state.weaponStatus)
+    const initialState = {
+      weaponStatus: this.props.weaponStatus
+    }
+    const store = createStore(reducer, initialState)
     return (
       <div>
-        <h1>各戦績</h1>
-      
-        <DropDownMenu weaponStatus={this.state.weaponStatus} />
-      
+        <Provider store={store}>
+          <AppDropMenu />
+        </Provider>
       </div>
     )
   }
-
 }
+
 export default WeaponStatus
