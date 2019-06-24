@@ -24,10 +24,10 @@ class MaximumEkia extends React.Component {
     return (
       <div>
         <h1>OVERALL USAGE</h1>
-        
-        {<ShowmaxEkia key={weapon.id} showmaxekia={weapon} />}
-        {<ShowequipEkia key={equipment.id} showequipekia={equipment}/>}
-        
+        <div id="showstatus">
+          <ShowmaxEkia key={weapon.id} showmaxekia={weapon} />
+          <ShowequipEkia key={equipment.id} showequipekia={equipment}/>
+        </div>
       </div>
     )
   }

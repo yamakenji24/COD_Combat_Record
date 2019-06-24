@@ -13,6 +13,6 @@ class AchievementController < ApplicationController
       :accuracy,
       :timeused
     )
-
+    
   end
 end

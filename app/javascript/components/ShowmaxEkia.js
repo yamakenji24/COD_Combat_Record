@@ -18,10 +18,13 @@ class ShowmaxEkia extends React.Component {
   }
     
   render() {
+    const route = "/assets/Weapon_image/"+this.state.maxEkia[0].name+".png"
     return (
       <div id="maxekia">
+        
         <p>{this.state.maxEkia[0].groupname}</p>
         <p>{this.state.maxEkia[0].name}</p>
+        <img src= {route} />
         <div onClick={this.props.handleopenweaponModal.bind(this)} id="viewmore">View Weapon</div>
     
         <Modal

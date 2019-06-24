@@ -3,11 +3,13 @@ import {Animated} from "react-animated-css"
 
 const ShowMaxStatus = (props) => {
   const maxweapon =  props.maxEkia
-  
+  const route = "/assets/Weapon_image/"+maxweapon[0].name+".png"
   return (
     <div>
       <h2>{maxweapon[0].groupname}</h2>
-      <h2>{maxweapon[0].name}</h2><br></br>
+      <h2>{maxweapon[0].name}</h2>
+      <img src={route} />
+      
       <div id="left">
         <h4>EKIA/D RATIO</h4>
         <p>{(maxweapon[0].ekia/maxweapon[0].death).toFixed(2)}</p>
